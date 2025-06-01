@@ -23,4 +23,7 @@ public class Producto {
     @Column(nullable = false, length = 100, unique = false)
     private String estado_producto;
 
+    @Column(nullable = false, length = 100, unique = false)
+    private String stock_producto;
+
 }
