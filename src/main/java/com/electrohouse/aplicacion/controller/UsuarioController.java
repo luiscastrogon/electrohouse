@@ -1,6 +1,5 @@
 package com.electrohouse.aplicacion.controller;
 
-<<<<<<< HEAD
 import com.electrohouse.aplicacion.model.Usuario;
 import com.electrohouse.aplicacion.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,4 @@ public class UsuarioController {
         List<Usuario> usuarios = usuarioService.findAll();
         return ResponseEntity.status(200).body(usuarios);
     }
-=======
-public class UsuarioController {
-
-    //
->>>>>>> 2b6551acde06170fa22ad0f91c8b22da0c314b0c
 }
