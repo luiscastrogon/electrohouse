@@ -15,8 +15,8 @@ public class Despacho {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_despacho;
+    private Integer despachoId;
 
     @Column(nullable = false, length = 100, unique = false)
-    private String tipo_despacho;
+    private String tipoDespacho;
 }
