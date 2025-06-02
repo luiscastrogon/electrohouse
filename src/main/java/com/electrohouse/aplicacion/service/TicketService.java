@@ -1,4 +1,5 @@
 package com.electrohouse.aplicacion.service;
+import com.electrohouse.aplicacion.repository.UsuarioRepository;
 
 import com.electrohouse.aplicacion.model.Ticket;
 import com.electrohouse.aplicacion.model.Usuario;
@@ -22,6 +23,9 @@ public class TicketService {
 
     @Autowired
     private TicketRepository ticketRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private JavaMailSender mailSender;
@@ -50,11 +54,26 @@ public class TicketService {
             ticket.setEstados(nuevoEstado);
             ticketRepository.save(ticket);
 
+<<<<<<< HEAD
             //enviarCorreo(ticket);
+=======
+
+            // Simulación del envío de correo, mas adelante implementaremos
+
+            String correo = ticket.getCorreoSolicitante();
+            System.out.println("Para: " + correo);
+            System.out.println("Asunto: Estado de ticket actualizado");
+            System.out.println("Cuerpo: Hola, el estado de tu ticket #" + ticket.getIdTicket()
+                    + " ha sido actualizado a: " + nuevoEstado);
+
+>>>>>>> 1bb2574857b26413ca6129e8609394a9ee73f650
             return true;
+
+
         }
         return false;
     }
+<<<<<<< HEAD
 
     //Método privado para enviar correo cuando se cambia el estado
 /*
@@ -75,6 +94,6 @@ public class TicketService {
     }
 
  */
+=======
+>>>>>>> 1bb2574857b26413ca6129e8609394a9ee73f650
 }
-
-

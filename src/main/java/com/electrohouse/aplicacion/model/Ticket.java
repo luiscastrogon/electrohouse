@@ -1,4 +1,5 @@
 package com.electrohouse.aplicacion.model;
+import com.electrohouse.aplicacion.model.Usuario;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,7 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
+
 public class Ticket {
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +29,7 @@ public class Ticket {
 
     @Column(nullable = false, length = 100)
     private String correoSolicitante;
+
 }
 
 

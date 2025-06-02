@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "usuarios")
 @Data
@@ -40,5 +42,7 @@ public class Usuario {
 
     @Column(nullable = false, length = 10, unique = false)
     private String clave;
+
+
 
 }

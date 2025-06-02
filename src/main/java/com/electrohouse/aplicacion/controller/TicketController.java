@@ -22,8 +22,13 @@ public class TicketController {
     private TicketService ticketService;
 
     // Obtener todos los tickets
-    @GetMapping
+    @GetMapping("/api/v1/ticket/traerticket")
     public ResponseEntity<List<Ticket>> getAllTickets() {
+        List <Ticket> tickets = ticketService.findAll();
+        if (tickets.isEmpty()) {
+            return  ResponseEntity.noContent().build();
+        }
+
         return ResponseEntity.ok(ticketService.findAll());
     }
 
@@ -39,7 +44,7 @@ public class TicketController {
     }
 
     // Obtener ticket por ID
-    @GetMapping("/api/v1/ticket/traerticket")
+    @GetMapping("/api/v1/ticket/traerticket/{idTicket}")
     public ResponseEntity<?> getTicketById(@PathVariable Integer idTicket) {
         Optional<Ticket> ticket = ticketService.findById(idTicket);
         if (ticket.isPresent()) {
@@ -50,14 +55,20 @@ public class TicketController {
     }
 
     // Cambiar estado del ticket y enviar correo
-    @PutMapping("/api/v1/ticket/{idTicket}/cambiarestado")
+    @PutMapping("/api/v1/ticket/cambiarestado/{idTicket}")
     public ResponseEntity<?> actualizarEstado(@PathVariable Integer idTicket, @RequestBody Map<String, String> request) {
         String nuevoEstado = request.get("estados");
-        boolean nuevoboolean = ticketService.cambiarEstadoTicket(idTicket, nuevoEstado);
-        if (nuevoboolean) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
+        if (nuevoEstado == null || nuevoEstado.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body("El campo 'estados' es obligatorio.");
+        }
+
+        boolean actualizado = ticketService.cambiarEstadoTicket(idTicket, nuevoEstado);
+
+        if (actualizado) {
+            return ResponseEntity.status(HttpStatus.CREATED).body("Estado actualizado y correo enviado.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Ticket no encontrado.");
+        }
     }
 }
