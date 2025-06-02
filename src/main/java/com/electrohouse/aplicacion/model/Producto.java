@@ -15,15 +15,15 @@ public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_producto;
+    private Integer idProducto;
 
     @Column(nullable = false, length = 100, unique = false)
-    private String nombre_producto;
+    private String nombreProducto;
 
     @Column(nullable = false, length = 100, unique = false)
-    private String estado_producto;
+    private String estadoProducto;
 
     @Column(nullable = false, length = 100, unique = false)
-    private Integer stock_producto;
+    private Integer stockProducto;
 
 }

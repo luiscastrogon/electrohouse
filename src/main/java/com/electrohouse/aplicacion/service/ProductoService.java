@@ -20,9 +20,9 @@ public class ProductoService {
         return  productoRepository.findAll();
     }
 
-    public boolean validarDisponibilidad(String nombre_producto, int cantidadRequerida) {
-        return productoRepository.findByNombre_producto(nombre_producto)
-                .map(producto -> producto.getStock_producto() >= cantidadRequerida)
+    public boolean validarDisponibilidad(String nombreProducto, int cantidadRequerida) {
+        return productoRepository.findByNombreProducto(nombreProducto)
+                .map(producto -> producto.getStockProducto() >= cantidadRequerida)
                 .orElse(false);
     }
 }
