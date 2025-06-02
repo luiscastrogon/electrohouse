@@ -76,10 +76,10 @@ public class UsuarioController {
     //para cambiar contraseña.
 
     @PutMapping("/api/v1/usuario/login/cambioclave")
-    public ResponseEntity<?> cambioclave(@RequestBody Map<String, String> request) {
+    public ResponseEntity<?> changePassword(@RequestBody Map<String, String> request) {
         String correo = request.get("correo");
-        String clave = request.get("nuevaClave");
-        boolean nuevoBoolean = usuarioService.changePassword(correo, clave);
+        String nuevaClave = request.get("nuevaClave");
+        boolean nuevoBoolean = usuarioService.changePassword(correo, nuevaClave);
 
         if (nuevoBoolean) {
             return ResponseEntity.status(200).build();
