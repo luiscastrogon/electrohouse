@@ -59,4 +59,22 @@ public class UsuarioService {
         }
         return false;
     }
+
+    //Regla para actualizar datos de usuario direccion y telefono.
+
+    public boolean modificarDatosUsuario(String correo, String clave, String nuevaDireccion, String nuevoTelefono) {
+        Optional<Usuario> usuarioLog = usuarioRepository.findBycorreo(correo);
+        if (usuarioLog.isPresent()){
+            Usuario usuario = usuarioLog.get();
+            if (usuario.getClave().equals(clave)){
+                usuario.setClave(nuevaDireccion);
+                usuario.setClave(nuevoTelefono);
+                usuarioRepository.save(usuario);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

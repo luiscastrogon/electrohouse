@@ -82,10 +82,22 @@ public class UsuarioController {
         boolean nuevoBoolean = usuarioService.changePassword(correo, nuevaClave);
 
         if (nuevoBoolean) {
-            return ResponseEntity.status(200).build();
+            return ResponseEntity.status(201).build();
         }
         return ResponseEntity.status(404).build();
     }
 
+    @PutMapping("/api/usuario/login/modificardatos")
+    public ResponseEntity<?> modificarDatos(@RequestBody Map<String, String> request) {
+        String correo = request.get("correo");
+        String clave = request.get("clave");
+        String direccion = request.get("direccion");
+        String telefono = request.get("telefono");
 
+        boolean nuevoBoolean = usuarioService.modificarDatosUsuario(correo, clave, direccion, telefono);
+        if (nuevoBoolean) {
+            return ResponseEntity.status(201).build();
+        }
+        return ResponseEntity.status(401).build();
+    }
 }
