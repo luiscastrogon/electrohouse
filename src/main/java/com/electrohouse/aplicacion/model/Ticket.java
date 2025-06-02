@@ -15,7 +15,7 @@ public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_ticket;
+    private Integer idTicket;
 
     @Column(nullable = false, length = 100, unique = false)
     private String categorias;
