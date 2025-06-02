@@ -23,4 +23,7 @@ public class Ticket {
     @Column(nullable = false, length = 100, unique = false)
     private String estados;
 
+    @Column(nullable = false, length = 100)
+    private String correoSolicitante;
+
 }
