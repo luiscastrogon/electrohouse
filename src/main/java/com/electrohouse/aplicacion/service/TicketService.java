@@ -1,18 +1,3 @@
-package com.electrohouse.aplicacion.service;
-import com.electrohouse.aplicacion.repository.UsuarioRepository;
-
-import com.electrohouse.aplicacion.model.Ticket;
-import com.electrohouse.aplicacion.model.Usuario;
-import com.electrohouse.aplicacion.repository.TicketRepository;
-import jakarta.mail.MessagingException;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Service;
-
-
 import java.util.List;
 import java.util.Optional;
 
@@ -23,9 +8,6 @@ public class TicketService {
 
     @Autowired
     private TicketRepository ticketRepository;
-
-    @Autowired
-    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private JavaMailSender mailSender;
@@ -54,30 +36,15 @@ public class TicketService {
             ticket.setEstados(nuevoEstado);
             ticketRepository.save(ticket);
 
-<<<<<<< HEAD
             //enviarCorreo(ticket);
-=======
-
-            // Simulación del envío de correo, mas adelante implementaremos
-
-            String correo = ticket.getCorreoSolicitante();
-            System.out.println("Para: " + correo);
-            System.out.println("Asunto: Estado de ticket actualizado");
-            System.out.println("Cuerpo: Hola, el estado de tu ticket #" + ticket.getIdTicket()
-                    + " ha sido actualizado a: " + nuevoEstado);
-
->>>>>>> 1bb2574857b26413ca6129e8609394a9ee73f650
             return true;
-
-
         }
         return false;
     }
-<<<<<<< HEAD
 
     //Método privado para enviar correo cuando se cambia el estado
-/*
-    private void enviarCorreo(Ticket ticket) {
+
+    /*private void enviarCorreo(Ticket ticket) {
         Usuario usuario = ticket.getUsuario();
         String to = usuario.getCorreo();
         String setSubject = "Actualización de estado de tu ticket";
@@ -91,9 +58,5 @@ public class TicketService {
         message.setText(Text);
         mailSender.send(message);
 
-    }
-
- */
-=======
->>>>>>> 1bb2574857b26413ca6129e8609394a9ee73f650
+    } */
 }
