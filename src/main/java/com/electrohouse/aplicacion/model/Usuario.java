@@ -15,7 +15,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_usuario;
+    private Integer id;
 
     @Column(nullable = false, length = 100, unique = false)
     private String nombres;
@@ -37,5 +37,8 @@ public class Usuario {
 
     @Column(nullable = false, length = 100, unique = false)
     private String tipo;
+
+    @Column(nullable = false, length = 10, unique = false)
+    private String clave;
 
 }
