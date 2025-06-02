@@ -1,4 +1,5 @@
 package com.electrohouse.aplicacion.service;
+import com.electrohouse.aplicacion.repository.UsuarioRepository;
 
 import com.electrohouse.aplicacion.model.Ticket;
 import com.electrohouse.aplicacion.model.Usuario;
@@ -22,6 +23,9 @@ public class TicketService {
 
     @Autowired
     private TicketRepository ticketRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private JavaMailSender mailSender;
@@ -50,29 +54,19 @@ public class TicketService {
             ticket.setEstados(nuevoEstado);
             ticketRepository.save(ticket);
 
-            enviarCorreo(ticket);
+
+            // Simulación del envío de correo, mas adelante implementaremos
+
+            String correo = ticket.getCorreoSolicitante();
+            System.out.println("Para: " + correo);
+            System.out.println("Asunto: Estado de ticket actualizado");
+            System.out.println("Cuerpo: Hola, el estado de tu ticket #" + ticket.getIdTicket()
+                    + " ha sido actualizado a: " + nuevoEstado);
+
             return true;
+
+
         }
         return false;
     }
-
-    //Método privado para enviar correo cuando se cambia el estado
-
-    private void enviarCorreo(Ticket ticket) {
-        Usuario usuario = ticket.getUsuario();
-        String to = usuario.getCorreo();
-        String setSubject = "Actualización de estado de tu ticket";
-        String Text = "Hola,\n\nTu ticket con ID #" + ticket.getIdTicket() +
-                " ha sido actualizado al estado: " + ticket.getEstados() + "." +
-                "\n\nSaludos,\nSoporte Técnico";
-
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(to);
-        message.setSubject(setSubject);
-        message.setText(Text);
-        mailSender.send(message);
-
-    }
 }
-
-
