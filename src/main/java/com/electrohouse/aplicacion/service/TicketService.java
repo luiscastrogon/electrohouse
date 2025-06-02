@@ -50,14 +50,14 @@ public class TicketService {
             ticket.setEstados(nuevoEstado);
             ticketRepository.save(ticket);
 
-            enviarCorreo(ticket);
+            //enviarCorreo(ticket);
             return true;
         }
         return false;
     }
 
     //Método privado para enviar correo cuando se cambia el estado
-
+/*
     private void enviarCorreo(Ticket ticket) {
         Usuario usuario = ticket.getUsuario();
         String to = usuario.getCorreo();
@@ -73,6 +73,8 @@ public class TicketService {
         mailSender.send(message);
 
     }
+
+ */
 }
 
 

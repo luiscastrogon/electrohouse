@@ -25,4 +25,16 @@ public class ProductoService {
                 .map(producto -> producto.getStockProducto() >= cantidadRequerida)
                 .orElse(false);
     }
+
+    public Producto findById(Integer id) {
+        return productoRepository.findById(id).orElse(null);
+    }
+
+    public Producto save(Producto producto) {
+        return productoRepository.save(producto);
+    }
+
+    public void delete(Integer id) {
+        productoRepository.deleteById(id);
+    }
 }
