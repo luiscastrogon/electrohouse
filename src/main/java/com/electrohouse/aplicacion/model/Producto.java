@@ -24,6 +24,6 @@ public class Producto {
     private String estado_producto;
 
     @Column(nullable = false, length = 100, unique = false)
-    private String stock_producto;
+    private Integer stock_producto;
 
 }

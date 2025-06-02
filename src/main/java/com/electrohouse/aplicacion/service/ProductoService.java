@@ -19,4 +19,10 @@ public class ProductoService {
     public List<Producto> findAll() {
         return  productoRepository.findAll();
     }
+
+    public boolean validarDisponibilidad(String nombre_producto, int cantidadRequerida) {
+        return productoRepository.findByNombre_producto(nombre_producto)
+                .map(producto -> producto.getStock_producto() >= cantidadRequerida)
+                .orElse(false);
+    }
 }
